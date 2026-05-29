@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mobile430.css">
+    <link rel="shortcut icon" href=" img/logopypiact.png" />
+    <title>ACT</title>
+</head>
+
+<body>
+    <main>
+        <img src=" img/logo.svg" alt="" id="logo">
+        <h1 id="titulo">PIPOUS ACT</h1>
+
+        <!--Área que vai conter os checkbox-->
+
+        <!-- Caixa de entrada para o número -->
+
+        <section class="controle">
+
+            <div class="entradas">
+                <h2>CONTROLE DE SÉRIES</h2>
+                <br> <br>
+                <input type="number" id="numberInput" placeholder="Digite o número de séries">
+                <input type="number" id="timerInput" placeholder="Digite o tempo de descanso">
+            </div>
+            <div class="marcarSerie">
+                <button id="convertButton">MARCAR SÉRIE</button>
+            </div>
+        </section>
+
+        <section class="saidas">
+            <div class="tituloSaida">
+                <h2>marque as séries realizadas</h2>
+            </div>
+            <br>
+            <div id="resultado">
+                <input type="checkbox" name="anilha" id="anilha" class="anilha">
+            </div>
+        </section>
+
+        <section class="relogio">
+            <div id="tituloRelogio">
+                <h2>Tempo para descanso</h2>
+            </div>
+
+            <br>
+
+            <div id="timer">
+                <span id="minutes">00</span><span>:</span><span id="seconds">00</span>
+            </div>
+
+
+        </section>
+        <button onclick="window.location.reload()" id="clear">Zerar</button>
+        <br> <br>
+        <section class="apoie">
+            <h2>APOIE O PROJETO</h2>
+            <br>
+            <p>Ajude a manter nosso projeto vivo. Copie a nossa chave pix
+                e nos envie qualquer valor, o importante é ajudar. <br>
+                Instuição: Mercado Pago. <br>
+                <span id="donoDaConta">Nome: Francisco José Ferreira de Souza.</span>
+            </p>
+
+            <div id="pix">
+                <input type="text" id="textToCopy" value="54168c42-baae-47e2-a965-ec9d798b9b67" class="esconder">
+                <button id="copyButton">Copiar chave Pix</button>
+            </div>
+
+        </section>
+    </main>
+
+
+    <script src=" scripts/script.js"></script>
+</body>
+
+</html>
