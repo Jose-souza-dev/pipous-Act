@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/mobile430.css">
-    <link rel="shortcut icon" href=" img/logopypiact.png" />
+    <link rel="shortcut icon" href=" img/logo.svg" />
     <title>ACT</title>
 </head>
 
@@ -24,7 +24,6 @@
                 <h2>CONTROLE DE SÉRIES</h2>
                 <br> <br>
                 <input type="number" id="numberInput" placeholder="Digite o número de séries">
-                <input type="number" id="timerInput" placeholder="Digite o tempo de descanso">
             </div>
             <div class="marcarSerie">
                 <button id="convertButton">MARCAR SÉRIE</button>
@@ -37,7 +36,7 @@
             </div>
             <br>
             <div id="resultado">
-                <input type="checkbox" name="anilha" id="anilha" class="anilha">
+
             </div>
         </section>
 
@@ -49,7 +48,13 @@
             <br>
 
             <div id="timer">
-                <span id="minutes">00</span><span>:</span><span id="seconds">00</span>
+                <div id="display">00:00:<span id="milissegundos">00</span></div>
+
+                <div class="botoes">
+                    <button id="btn-iniciar" onclick="iniciar()">Iniciar</button>
+                    <button id="btn-pausar" onclick="pausar()" disabled>Pausar</button>
+                    <button id="btn-resetar" onclick="resetar()" disabled>Resetar</button>
+                </div>
             </div>
 
 
@@ -75,6 +80,8 @@
 
 
     <script src=" scripts/script.js"></script>
+    <script src=" scripts/pix.js"></script>
+    <script src=" scripts/cronometro.js"></script>
 </body>
 
 </html>

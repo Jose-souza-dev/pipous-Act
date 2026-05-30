@@ -1,58 +1,55 @@
+// Selecionando os elementos do DOM
+const numberInput = document.getElementById('numberInput');
+const convertButton = document.getElementById('convertButton');
+const resultadoDiv = document.getElementById('resultado');
 
-// área que coloca os checkbox para contagem
+// Adicionando o evento de clique no botão
+convertButton.addEventListener('click', () => {
+    // Pega a quantidade de séries digitada
+    const totalSeries = parseInt(numberInput.value);
 
+    // Limpa os checkboxes gerados anteriormente
+    resultadoDiv.innerHTML = '';
 
-       // Seleciona o botão pelo seu ID
-        const button = document.getElementById('convertButton');
+    // Validação simples para o caso de o campo estar vazio ou zerado
+    if (isNaN(totalSeries) || totalSeries <= 0) {
+        return;
+    }
 
-        // Adiciona um ouvinte de eventos ao botão para que, quando clicado, execute a função handleButtonClick
-        button.addEventListener('click', handleButtonClick);
+    // Loop para criar apenas os checkboxes
+   for (let i = 0; i < totalSeries; i++) {
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.classList.add('anilha');
+    
+    // Espaçamento entre eles
+    checkbox.style.margin = '5px'; 
 
-        // Função que será chamada quando o botão for clicado
-        function handleButtonClick() {
-            // Seleciona a caixa de entrada pelo seu ID e obtém o valor digitado
-            const numberInput = document.getElementById('numberInput').value;
+    // Escuta a mudança para aplicar a imagem apenas quando marcado
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            // Remove a aparência padrão apenas ao marcar para permitir o fundo personalizado
+            this.style.webkitAppearance = 'none';
+            this.style.appearance = 'none';
             
-            // Seleciona o contêiner onde os checkboxes serão adicionados
-            const checkboxContainer = document.getElementById('checkboxContainer');
-            
-            // Limpa qualquer conteúdo anterior no contêiner de checkboxes
-            checkboxContainer.innerHTML = '';
-            
-            // Converte o valor da entrada em um número inteiro
-            const numberOfCheckboxes = parseInt(numberInput);
-            
-            // Cria o número de checkboxes especificado e adiciona-os ao contêiner
-            for (let i = 0; i < numberOfCheckboxes; i++) {
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.checked = false; // Define o checkbox como marcado por padrão
-                checkboxContainer.appendChild(checkbox);
-                //checkboxContainer.appendChild(document.createElement('br')); // Adiciona uma quebra de linha após cada checkbox
-            }
+            // Define o tamanho para casar com o tamanho padrão e aplica a imagem
+            this.style.width = '40px'; 
+            this.style.height = '40px';
+            this.style.backgroundImage = "url('../img/anilha-branco.png')";
+            this.style.backgroundSize = 'cover';
+            this.style.backgroundPosition = 'center';
+            this.style.border = 'none';
+        } else {
+            // Quando desmarcado, volta a ser o checkbox nativo do navegador
+            this.style.webkitAppearance = 'checkbox';
+            this.style.appearance = 'checkbox';
+            this.style.backgroundImage = 'none';
+            this.style.width = 'auto';
+            this.style.height = 'auto';
         }
+    });
 
-
-        // ÁREA DE PIX
-
-                // Seleciona o botão pelo seu ID
-                const copyButton = document.getElementById('copyButton');
-
-                // Adiciona um ouvinte de eventos ao botão para que, quando clicado, execute a função copyText
-                copyButton.addEventListener('click', copyText);
-        
-                // Função que será chamada quando o botão for clicado
-                function copyText() {
-                    // Seleciona a caixa de texto pelo seu ID
-                    const textToCopy = document.getElementById('textToCopy');
-                    
-                    // Seleciona o conteúdo da caixa de texto
-                    textToCopy.select();
-                    textToCopy.setSelectionRange(0, 99999); // Para dispositivos móveis
-        
-                    // Copia o texto selecionado para a área de transferência
-                    document.execCommand('copy');
-                    
-                    // Alerta o usuário que o texto foi copiado (opcional)
-                    alert('Texto copiado para a área de transferência!');
-                }
+    // Injeta o checkbox direto na div resultado
+    resultadoDiv.appendChild(checkbox);
+}
+});
