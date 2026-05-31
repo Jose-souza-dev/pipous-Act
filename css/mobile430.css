@@ -9,18 +9,18 @@
         font-display: swap;
     }
 
-    /* Declarando a versão Negrito (Bold) */
-
-
-
+    /* O SEGREDO AQUI: Garante que padding e border não aumentem o tamanho do elemento */
     * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box; 
         font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
         background-color: #0d0f14;
+        width: 100%;
+        overflow-x: hidden; /* Trava totalmente qualquer tentativa de scroll horizontal */
     }
 
     section.controle {
@@ -34,7 +34,7 @@
     }
 
     section.apoie {
-        width: 98%;
+        width: 100%; /* Mudado de 98% para 100% para alinhar com o padrão */
         height: 200px;
         display: flex;
         flex-direction: column;
@@ -74,18 +74,9 @@
         margin-top: -70px;
     }
 
-    .tituloSaida {
-        width: 100%;
-        margin-left: 10px;
-    }
-
-    #tituloRelogio {
-        width: 100%;
-        margin-left: 10px;
-    }
-
-    #timer {
-        width: 100%;
+    /* Corrigido: Elementos 100% com margin-left empurravam a tela para o lado */
+    .tituloSaida, #tituloRelogio, #timer {
+        width: calc(100% - 10px); 
         margin-left: 10px;
     }
 
@@ -133,15 +124,17 @@
         color: #e8ff47;
     }
 
+    /* Ajustado as margens laterais para não estourarem os 100% */
     #clear {
         width: 60%;
         height: 40px;
         background-color: #e8ff47;
-        margin: 10px 20% 0 20%;
+        margin: 10px auto 0 auto; /* Centralizado de forma segura */
         font-family: "Titulos", sans-serif;
         font-size: 16px;
         font-weight: 500;
         border-radius: 4px;
+        display: block;
     }
 
     .esconder {
@@ -149,15 +142,17 @@
         left: -9999px;
     }
 
+    /* Ajustado as margens laterais */
     #copyButton {
         width: 60%;
         height: 40px;
         background-color: #e8ff47;
-        margin: 15px 19% 0 14%;
+        margin: 15px auto 0 auto; /* Centralizado de forma segura */
         font-family: "Titulos", sans-serif;
         font-size: 16px;
         font-weight: 500;
         border-radius: 4px;
+        display: block;
     }
 
     div#pix {
@@ -165,7 +160,6 @@
         display: flex;
         justify-content: center;
         margin-top: 20px;
-
     }
 
     /*área de imagens*/
@@ -174,8 +168,6 @@
         display: block;
         margin: -60px auto 0 auto;
     }
-
-    /*--------------------------------------*/
 
     /*área de texto*/
     #titulo {
@@ -207,35 +199,20 @@
         margin-top: 10px;
     }
 
-    /*------------------------------------------*/
-
     /*área de checkbox */
-
     input[type="checkbox"] {
-        /* Remove o estilo padrão do navegador */
         appearance: none;
         -webkit-appearance: none;
-
-        /* Cria o tamanho da sua caixa */
         width: 40px;
         height: 40px;
-
-        /* Zera o fundo ou define uma cor inicial */
         background-color: #181b24;
-
-        /* Adiciona borda e cantos arredondados */
         border: 2px solid #ccc;
         border-radius: 4px;
-
-        /* Centraliza qualquer elemento que você coloque dentro */
         display: inline-block;
         position: relative;
         cursor: pointer;
-
-        /* Transição suave para quando for clicado */
         transition: background-color 0.2s, border-color 0.2s;
     }
-
 
     .anilha {
         width: 40px;
@@ -250,13 +227,12 @@
         background-image: url('../img/anilha.png');
     }
 
-    /*ARE DO CRONOMETRO*/
-
+    /* ÁREA DO CRONOMETRO */
     .cronometro-container {
-        width: 70%;
+        width: 90%; /* Mudado de 70% para 90% para caber melhor em telas de 430px */
         text-align: center;
         background: #1e293b;
-        padding: 30px 40px;
+        padding: 20px 15px; /* Diminuído o padding para não esmagar o conteúdo */
         border-radius: 12px;
         margin: 20px auto;
     }
@@ -267,7 +243,6 @@
         margin-bottom: 20px;
         font-variant-numeric: tabular-nums;
         color: #e8ff47;
-        /* Evita que os números fiquem dançando */
     }
 
     #milissegundos {
@@ -279,11 +254,11 @@
         display: flex;
         gap: 10px;
         justify-content: center;
-        margin-left: -40px;
+        margin-left: 0; /* Removido o -40px que jogava os botões para fora da tela */
     }
 
     button {
-        padding: 12px 24px;
+        padding: 12px 16px; /* Diminuído levemente o padding horizontal dos botões */
         font-size: 1rem;
         font-weight: bold;
         border: none;
@@ -292,40 +267,17 @@
         transition: all 0.2s ease;
     }
 
-    #btn-iniciar {
-        background-color: #22c55e;
-        color: white;
-    }
+    #btn-iniciar { background-color: #22c55e; color: white; }
+    #btn-iniciar:hover { background-color: #16a34a; }
+    #btn-pausar { background-color: #eab308; color: white; }
+    #btn-pausar:hover { background-color: #ca8a04; }
+    #btn-resetar { background-color: #ef4444; color: white; }
+    #btn-resetar:hover { background-color: #dc2626; }
 
-    #btn-iniciar:hover {
-        background-color: #16a34a;
-    }
-
-    #btn-pausar {
-        background-color: #eab308;
-        color: white;
-    }
-
-    #btn-pausar:hover {
-        background-color: #ca8a04;
-    }
-
-    #btn-resetar {
-        background-color: #ef4444;
-        color: white;
-    }
-
-    #btn-resetar:hover {
-        background-color: #dc2626;
-    }
-
-    /* Estilo para botões desativados */
     button:disabled {
         background-color: #475569 !important;
         color: #94a3b8;
         cursor: not-allowed;
         opacity: 0.6;
     }
-
-
 }
