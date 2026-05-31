@@ -9,7 +9,7 @@
         font-display: swap;
     }
 
-    /* O SEGREDO AQUI: Garante que padding e border não aumentem o tamanho do elemento */
+    /* Garante que padding e border não aumentem o tamanho do elemento */
     * {
         margin: 0;
         padding: 0;
@@ -20,102 +20,100 @@
     body {
         background-color: #0d0f14;
         width: 100%;
-        overflow-x: hidden; /* Trava totalmente qualquer tentativa de scroll horizontal */
+        overflow-x: hidden; /* Trava o scroll horizontal */
     }
 
     section.controle {
         width: 100%;
-        height: 280px;
+        height: auto; /* Mudado para auto para os botões se alinharem sem esmagar */
         display: flex;
-        flex-direction: row;
+        flex-direction: column; /* Em mobile, coluna funciona muito melhor */
         background-color: #181b24;
         border-radius: 10px;
-        padding: 10px;
+        padding: 20px;
+        gap: 15px;
     }
 
     section.apoie {
-        width: 100%; /* Mudado de 98% para 100% para alinhar com o padrão */
-        height: 200px;
+        width: 100%; 
+        height: auto;
         display: flex;
         flex-direction: column;
         background-color: #181b24;
         border-radius: 10px;
         padding: 15px;
+        margin-top: 20px;
     }
 
     section.controle .entradas {
-        width: 50%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 5px;
-        margin-top: 5px;
-        margin-left: 10px;
     }
 
     section.saidas {
         width: 100%;
-        height: 170px;
+        height: auto;
         display: flex;
         flex-direction: column;
         background-color: #181b24;
         border-radius: 10px;
-        padding: 10px;
-        margin-top: -120px;
+        padding: 15px;
+        margin-top: 20px; /* Removido margem negativa antiga que desalinhava */
     }
 
     section.relogio {
         width: 100%;
-        height: 170px;
+        height: auto;
         display: flex;
         flex-direction: column;
         background-color: #181b24;
         border-radius: 10px;
-        padding: 10px;
-        margin-top: -70px;
+        padding: 15px;
+        margin-top: 20px; /* Removido margem negativa antiga */
     }
 
-    /* Corrigido: Elementos 100% com margin-left empurravam a tela para o lado */
     .tituloSaida, #tituloRelogio, #timer {
-        width: calc(100% - 10px); 
-        margin-left: 10px;
+        width: 100%;
     }
 
-    #numberInput,
-    #timerInput {
-        width: 90%;
-        padding: 10px;
+    #numberInput {
+        width: 100%;
+        padding: 12px;
         border-radius: 5px;
         border: none;
         background-color: #2c2f38;
         color: #fff;
+        font-size: 16px;
     }
 
     .marcarSerie {
+        width: 100%;
         display: flex;
         justify-content: center;
-        margin-top: 72px;
     }
 
     #convertButton {
-        width: 160px;
-        height: 33px;
-        padding: 10px 20px;
+        width: 100%; /* Botão largo no mobile fica mais fácil de clicar */
+        height: 45px;
         border-radius: 5px;
         border: none;
         background-color: #e8ff47;
         color: #000;
-        font-weight: 500;
+        font-weight: bold;
         font-size: 16px;
         font-family: "Titulos", sans-serif;
         cursor: pointer;
-        margin-left: 10px;
     }
 
     #resultado {
         width: 100%;
-        padding: 10px;
+        padding: 10px 0;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap; /* Faz as anilhas irem para a linha de baixo se forem muitas */
+        gap: 10px;
     }
 
     span {
@@ -124,17 +122,17 @@
         color: #e8ff47;
     }
 
-    /* Ajustado as margens laterais para não estourarem os 100% */
-    #clear {
-        width: 60%;
-        height: 40px;
+    #clear, #copyButton {
+        width: 100%;
+        height: 45px;
         background-color: #e8ff47;
-        margin: 10px auto 0 auto; /* Centralizado de forma segura */
+        margin: 15px 0 0 0;
         font-family: "Titulos", sans-serif;
         font-size: 16px;
-        font-weight: 500;
+        font-weight: bold;
         border-radius: 4px;
-        display: block;
+        border: none;
+        cursor: pointer;
     }
 
     .esconder {
@@ -142,40 +140,23 @@
         left: -9999px;
     }
 
-    /* Ajustado as margens laterais */
-    #copyButton {
-        width: 60%;
-        height: 40px;
-        background-color: #e8ff47;
-        margin: 15px auto 0 auto; /* Centralizado de forma segura */
-        font-family: "Titulos", sans-serif;
-        font-size: 16px;
-        font-weight: 500;
-        border-radius: 4px;
-        display: block;
-    }
-
     div#pix {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
     }
 
-    /*área de imagens*/
+    /* área de imagens */
     #logo {
-        width: 160px;
+        width: 120px;
         display: block;
-        margin: -60px auto 0 auto;
+        margin: 20px auto;
     }
 
-    /*área de texto*/
+    /* área de texto */
     #titulo {
         color: #e8ff47;
         text-align: center;
         font-family: "Titulos", sans-serif;
-        font-size: 60px;
-        margin-top: -60px;
+        font-size: 45px;
         margin-bottom: 20px;
     }
 
@@ -183,24 +164,27 @@
         font-size: 16px;
         color: #7a7a7a;
         font-family: "Titulos", sans-serif;
+        text-transform: uppercase;
     }
 
     p {
-        width: 90%;
+        width: 100%;
         font-size: 14px;
         color: #7a7a7a;
         font-family: sans-serif;
+        line-height: 1.4;
     }
 
     #donoDaConta {
         font-size: 14px;
         color: #dfdfdf;
         font-family: sans-serif;
-        margin-top: 10px;
+        display: block;
+        margin-top: 5px;
     }
 
-    /*área de checkbox */
-    input[type="checkbox"] {
+    /* ESTILIZAÇÃO COMPLETA DAS ANILHAS (CHECKBOX) */
+    input[type="checkbox"].anilha {
         appearance: none;
         -webkit-appearance: none;
         width: 40px;
@@ -208,39 +192,26 @@
         background-color: #181b24;
         border: 2px solid #ccc;
         border-radius: 4px;
-        display: inline-block;
-        position: relative;
         cursor: pointer;
-        transition: background-color 0.2s, border-color 0.2s;
+        transition: all 0.2s;
+        display: inline-block;
     }
 
-    .anilha {
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
-    }
-
-    .anilhaMarcada {
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
-        background-image: url('../img/anilha.png');
+    /* O SEGREDO DO GITHUB: Quando clicado, o CSS troca o fundo pela imagem */
+    input[type="checkbox"].anilha:checked {
+        background-image: url('../img/anilha-branco.png'); /* Caminho correto relativo ao CSS */
+        background-size: cover;
+        background-position: center;
+        background-color: transparent;
+        border: none;
     }
 
     /* ÁREA DO CRONOMETRO */
-    .cronometro-container {
-        width: 90%; /* Mudado de 70% para 90% para caber melhor em telas de 430px */
-        text-align: center;
-        background: #1e293b;
-        padding: 20px 15px; /* Diminuído o padding para não esmagar o conteúdo */
-        border-radius: 12px;
-        margin: 20px auto;
-    }
-
     #display {
-        font-size: 3.5rem;
+        font-size: 3rem;
         font-weight: bold;
-        margin-bottom: 20px;
+        text-align: center;
+        margin-bottom: 15px;
         font-variant-numeric: tabular-nums;
         color: #e8ff47;
     }
@@ -252,27 +223,24 @@
 
     .botoes {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         justify-content: center;
-        margin-left: 0; /* Removido o -40px que jogava os botões para fora da tela */
+        width: 100%;
     }
 
-    button {
-        padding: 12px 16px; /* Diminuído levemente o padding horizontal dos botões */
-        font-size: 1rem;
+    .botoes button {
+        flex: 1; /* Faz todos os 3 botões terem o mesmo tamanho exato */
+        padding: 12px 0;
+        font-size: 0.9rem;
         font-weight: bold;
         border: none;
         border-radius: 6px;
         cursor: pointer;
-        transition: all 0.2s ease;
     }
 
     #btn-iniciar { background-color: #22c55e; color: white; }
-    #btn-iniciar:hover { background-color: #16a34a; }
     #btn-pausar { background-color: #eab308; color: white; }
-    #btn-pausar:hover { background-color: #ca8a04; }
     #btn-resetar { background-color: #ef4444; color: white; }
-    #btn-resetar:hover { background-color: #dc2626; }
 
     button:disabled {
         background-color: #475569 !important;
